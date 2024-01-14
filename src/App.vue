@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <TopBar @onClickNavButton="onClickNavButton"/>
+    <NavMenu v-if="navMenuOpen"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TopBar from './components/TopBar.vue';
+import NavMenu from './components/NavMenu.vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        TopBar,
+        NavMenu
+    },
+    data(){
+        return {
+            navMenuOpen: false
+        }
+    },
+    methods: {
+        onClickNavButton(){
+            this.navMenuOpen = !this.navMenuOpen
+        }
+    }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: 'Poppins', sans-serif;
+    @apply
+        relative
 }
 </style>
